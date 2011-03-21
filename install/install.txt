@@ -1,0 +1,14 @@
+The following directions cover how to install and set up the aggregator. The initial copy was written by 
+Charlie Arehart (http://carehart.org/). This document only covers installation. To see what has changed,
+please see the readme.txt file.
+
+--------- INSTALL INSTRUCTIONS ---------
+
+You may place this code in any directory of your webroot (it's not tied to being in the webroot, nor in any specific folder).
+ 
+You must create a myaggregator datasource. The SQL for building it is provided in the file tables.sql, and is designed to 
+run on MySQL 4 or 5, and will require modification to run with SQL Server, Access and perhaps other databases.
+
+Edit Application.cfc onApplicationStart variables to match your needs.
+Edit createschedules.cfm to use the right URL for your site, then run it once to setup the scheduled tasks.
+
