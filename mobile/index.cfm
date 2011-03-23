@@ -30,7 +30,7 @@
 <html>
 
 <head>
-<title>CFBloggers Mobile</title>
+<cfoutput><title>#application.siteTitle# Mobile</title></cfoutput>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
 <script src="http://code.jquery.com/jquery-1.5.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
@@ -41,7 +41,7 @@
 <div data-role="page" id="intro">
 
 	<div data-role="header">
-	<h1>CFBloggers Mobile</h1>
+	<cfoutput><h1>#application.siteTitle# Mobile</h1></cfoutput>
 	</div>
 
 	<div data-role="content">
