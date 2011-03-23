@@ -88,8 +88,10 @@ CREATE TABLE `entries` (
   `content` mediumtext,
   `categories` varchar(500) default NULL,
   `created` timestamp NULL default CURRENT_TIMESTAMP,
+  `clicks` int(11) default '0',
   PRIMARY KEY  (`id`),
   KEY `blogidfk_fk_index` (`blogidfk`),
+  KEY `BlogIdIndex` (`blogidfk`),
   CONSTRAINT `blogidfk_fk_index` FOREIGN KEY (`blogidfk`) REFERENCES `blogs` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
