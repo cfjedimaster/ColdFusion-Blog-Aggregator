@@ -22,7 +22,7 @@
 			  {name:'id', index:'id',width:35, formatter:buttonFormatter},
 		      {name:'name', index:'name', width:200}, 
 		      {name:'description', index:'description', width:250}, 
-		      {name:'url', index:'uel', width:250} 
+		      {name:'url', index:'url', width:250} 
 		     
 		    ],
 			width:735,
