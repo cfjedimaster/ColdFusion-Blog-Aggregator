@@ -38,6 +38,7 @@
 <li><a href="index.cfm">Home</a></li>
 <li><a href="list.cfm">Feeds</a></li>
 <li><a href="userreport.cfm">User Report</a></li>
+<li><a href="logout.cfm">Logout</a></li>
 </ul>
 </div>
 </cfif>

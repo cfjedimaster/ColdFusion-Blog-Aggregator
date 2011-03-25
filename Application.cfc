@@ -113,7 +113,7 @@
 			<cfset session.adminlogin = true>
 		</cfif>
 
-		<cfif findNoCase("/admin/", arguments.thePage) and not structKeyExists(session, "adminlogin")>
+		<cfif findNoCase("/admin/", arguments.thePage) and (not structKeyExists(session, "adminlogin") OR NOT session.adminLogin)>
 			<cfinclude template="/admin/login.cfm">
 			<cfabort>
 		</cfif>
