@@ -19,13 +19,13 @@
 		    mtype: 'GET',
 		    colNames:['',  'Name','Description', 'URL'],
 		    colModel :[ 
-			  {name:'id', index:'id',width:35, formatter:buttonFormatter},
+			  {name:'id', index:'id',width:40, formatter:buttonFormatter},
 		      {name:'name', index:'name', width:200}, 
 		      {name:'description', index:'description', width:250}, 
 		      {name:'url', index:'url', width:250} 
 		     
 		    ],
-			width:735,
+			width:740,
 			height: 500,
 			altRows: true,
 		    pager: '##pager',
