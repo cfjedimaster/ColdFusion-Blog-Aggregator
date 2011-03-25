@@ -52,44 +52,50 @@
 		<cfset saved = application.entries.updateFeed(argumentCollection=form) />
 	</cfif>
 	<cfif form.urlomyurl neq ''>
-	<script>
 
-		ColdFusion.Window.hide('pfeedWin')
-
-	</script>
 	</cfif>
 </cfif>
 
+
 <cfif saved>
-	<div style="text-align:center;"><strong> || Feed Saved ||</strong></div>
+	<div class="ui-widget">
+				<div style="margin:1em; padding: .3em;" class="ui-state-highlight ui-corner-all"> 
+					<p><span style="float: left; margin-right: .3em;" class="ui-icon ui-icon-info"></span>
+					<strong>Yay!</strong> The feed saved.</p>
+				</div>
+			</div>
 </cfif>
 
-<cfform name="feedForm" action="#cgi.SCRIPT_NAME#" method="post" onsubmit="isChanged=true;">
-	<div>
-		<div style="float:left; width:100px;">Name</div>
-		<div style="float:left;"><cfinput type="text" name="name" id="name" value="#form.name#" required="true" message="Feed name is required." maxlength="255" size="50" /></div>
-		<div style="clear:both;"></div>
-	</div>
-	<div>
-		<div style="float:left; width:100px;">Description</div>
-		<div style="float:left;"><cftextarea name="description" id="description" value="#form.description#" required="true" message="Description is required." maxlength="255" cols="50" ></cftextarea></div>
-		<div style="clear:both;"></div>
-	</div>
-	<div>
-		<div style="float:left; width:100px;">URL</div>
-		<div style="float:left;"><cfinput type="text" name="url" id="url" value="#form.url#" required="true" message="Feed url is required." maxlength="500" size="50"/></div>
-		<div style="clear:both;"></div>
-	</div>
-	<div>
-		<div style="float:left; width:100px;">RSS URL</div>
-		<div style="float:left;"><cfinput type="text" name="rssurl" id="rssurl" value="#form.rssurl#" required="true" message="Feed rssurl is required." maxlength="500" size="50"/></div>
-		<div style="clear:both;"></div>
-	</div>
-	<div>
-		<div style="float:left; width:100px;">&nbsp;</div>
-		<div style="float:left;"><cfinput type="submit" name="submit" id="submit" value="Save it" /></div>
-		<div style="clear:both;"></div>
-	</div>
-	<cfinput type="hidden" name="id" id="id" value="#url.id#" />
-	<cfinput type="hidden" name="urlomyurl" value="#url.myurl#">
-</cfform>
+<cfoutput>
+	<script>
+		$(document).ready(function(){
+			$("##feedForm").uniform();
+		})
+	</script>
+	<form  class="uniForm" id="feedForm" style="z-index:9999">
+	  <fieldset>
+	    <div class="ctrlHolder">
+	      <label for="name">Blog Name</label>
+	      <input type="text" id="name" name="name" value="#form.name#" size="35" class="textInput">
+	    </div>
+	  
+	    <div class="ctrlHolder">
+	      <label for="description">Description</label>
+	      <textarea id="description" name="description" rows="25" cols="25">#form.description#</textarea>
+	    </div>
+	  
+	    <div class="ctrlHolder">
+	      <label for="url">Blog URL</label>
+	      <input type="text" id="url" name="url" value="#form.url#" size="35" class="textInput">
+	    </div>
+	  
+	    <div class="ctrlHolder">
+	      <label for="rssurl">RSS URL</label>
+	      <input type="text" id="rssurl" name="rssurl" value="#form.rssurl#" size="35" class="textInput">
+	    </div>
+	  	<input type="hidden" name="id" id="id" value="#url.id#" />
+		<input type="hidden" name="urlomyurl" value="#url.myurl#">
+	  </fieldset>
+</form>
+
+</cfoutput>

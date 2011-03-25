@@ -154,17 +154,28 @@
 <cffunction name="getFeeds" access="public" returnType="query" output="false">
 	<cfargument name="id" required="false" default="" />
 	<cfargument name="url" required="false" default="" />
+	<cfargument name="sidx" default="name" />
+	<cfargument name="sord" default="asc" />
+	<cfargument name="filter" default="" />
 	<cfset var q = "">
 
 	<cfquery name="q" datasource="#variables.dsn#">
 	select	id, name, description, url, rssurl, status
 	from	blogs
+	where 1 =1
 	<cfif len(trim(arguments.id))>
-	where id = <cfqueryparam value="#arguments.id#" cfsqltype="cf_sql_integer" />
+	and id = <cfqueryparam value="#arguments.id#" cfsqltype="cf_sql_integer" />
 	<cfelseif len(trim(arguments.url))>
-	where	url = <cfqueryparam value="#arguments.url#" cfsqltype="cf_sql_varchar" />
+	and	url = <cfqueryparam value="#arguments.url#" cfsqltype="cf_sql_varchar" />
 	</cfif>
-	order by name asc
+	<cfif len(trim(arguments.filter))>
+		and (lcase(name) like <cfqueryparam value="%#lcase(arguments.filter)#%" cfsqltype="cf_sql_varchar" />
+		or lcase(description) like <cfqueryparam value="%#lcase(arguments.filter)#%" cfsqltype="cf_sql_varchar" />
+		or lcase(url) like <cfqueryparam value="%#lcase(arguments.filter)#%" cfsqltype="cf_sql_varchar" />
+		or lcase(rssurl) like <cfqueryparam value="%#lcase(arguments.filter)#%" cfsqltype="cf_sql_varchar" />)
+	</cfif>
+	
+	order by #arguments.sidx# #arguments.sord#
 	</cfquery>
 
 	<cfreturn q>
