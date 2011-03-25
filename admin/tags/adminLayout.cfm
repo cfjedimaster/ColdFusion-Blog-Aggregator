@@ -32,16 +32,15 @@
 <body>
 
 <!--- TODO: Switch to request scope --->
-
-<div id="menu">
 <cfif structKeyExists(session, "adminlogin") AND session.adminLogin>
+<div id="menu">
 <ul>
 <li><a href="index.cfm">Home</a></li>
 <li><a href="list.cfm">Feeds</a></li>
 <li><a href="userreport.cfm">User Report</a></li>
 </ul>
-</cfif>
 </div>
+</cfif>
 <div id="content">
 <div id="header">#application.siteName# Admin</div>
 <div id="pageTitle">#attributes.title#</div>
