@@ -195,7 +195,7 @@ Aggregating #feeds.recordCount# feeds.
 								<cfset thisurl = "http://#application.siteURL#/click.cfm?entry=#res#">
 								<cfset shorturl = application.utils.googleUrlShorten(thisurl)>
 								<cfset thisurl = " - #shorturl#">
-								<cfset avail = 160 - len(thisurl)>
+								<cfset avail = 140 - len(thisurl)>
 								<cfset message = left(title, avail) & thisurl>
 								<cfset application.twitter.updateStatus(message)>
 							</cfif>
