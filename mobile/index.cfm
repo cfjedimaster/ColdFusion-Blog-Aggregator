@@ -1,29 +1,9 @@
-<cfif structKeyExists(url, "page") and isNumeric(url.page)>
-	<cfset url.start = (url.page-1) * request.perpage + 1>
-</cfif>
-
 <cfparam name="url.start" default="1">
 
 <cfif not isNumeric(url.start) or url.start lte 0 or url.start neq round(url.start)>
 	<cfset url.start = 1>
 </cfif>
-<!--- to do - support search on mobile
-<cfif structKeyExists(url, "search_query")>
-	<cfset form.search_query = url.search_query>
-</cfif>
-<cfif structKeyExists(form, "search_query") and len(trim(form.search_query))>
-	<cfset form.search_query = left(trim(htmlEditFormat(form.search_query)),255)>
-	<!--- was it a search we want to log? --->
-	<cfif structKeyExists(url, "log")>
-		<cfset log = true>
-	<cfelse>
-		<cfset log = false>
-	</cfif>
-	<cfset data = application.entries.getEntries(url.start,request.perpage,form.search_query,log)>
-<cfelse>
-	<cfset data = application.entries.getEntries(url.start,request.perpage)>
-</cfif>
---->
+
 <cfset data = application.entries.getEntries(url.start,request.perpage)>
 <cfset entries = data.entries>
 <!DOCTYPE html>
@@ -40,13 +20,13 @@
 
 <div data-role="page" id="intro">
 
-	<div data-role="header">
-	<cfoutput><h1>#application.siteTitle# Mobile</h1></cfoutput>
+	<div data-role="header" data-backbtn="false">
+	<cfoutput><h1>#application.siteTitle#  Mobile [#url.start#-#url.start+request.perpage-1#]</h1></cfoutput>
 	</div>
 
 	<div data-role="content">
 		<ul data-role="listview" data-split-icon="gear">
-		<cfoutput query="entries">
+		<cfoutput query="entries" >
 			<cfset myurl = listFirst(entries.url)>
 			<li>
 			<a href="display.cfm?entry=#id#">#title#</a>
@@ -55,6 +35,21 @@
 		</cfoutput>
 		</ul>
 	</div>
+		<div data-role="controlgroup" data-type="horizontal" align="center">
+			<cfoutput>
+			<cfif url.start gt 1>
+			<a href="index.cfm?start=#max(url.start-request.perpage,1)#" data-role="button" data-theme="b">Previous</a> 
+			<cfelse>
+			<a href="" data-role="button">Previous</a>
+			</cfif>
+			<cfif url.start + request.perpage lt data.total>
+			<a href="index.cfm?start=#url.start+request.perpage#" data-role="button" data-theme="b">Next</a>
+			<cfelse>
+			<a href="" data-role="button">Next</a>
+			</cfif>
+			</cfoutput>
+		</div>
+
 
 	<div data-role="footer">
 		<h4>Created by Raymond Camden, coldfusionjedi.com</h4>
