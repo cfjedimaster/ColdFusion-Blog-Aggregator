@@ -43,7 +43,8 @@
 		<cfset application.toxml = createObject("component", "components.toxml")>
 		<cfset application.rss = createObject("component", "components.rss")>
 
-		<cfset var paths = [expandPath("./components/twitter4j-core-2.1.4-SNAPSHOT.jar")]>
+		<cfset var root = getDirectoryFromPath(getCurrentTemplatePath())>
+		<cfset var paths = ["#root#/components/twitter4j-core-2.1.4-SNAPSHOT.jar"]>
 		<cfset application.javaloader = createObject("component", "components.javaloader.JavaLoader").init(paths)>
 		<cfif application.twitterNotification>
 			<cfset application.Twitter = application.javaloader.create("twitter4j.Twitter")>
@@ -136,7 +137,8 @@
 		<cfargument name="exception" required="true">
 		<cfargument name="eventname" type="string" required="true">
 
-		<cfif application.localserver>
+		<!--- if adminemail does not exist, consider this a NOT loaded app --->
+		<cfif not structKeyExists(application,"adminemail") or (structKeyExists(application, "localserver") and application.localserver)>
 			<cfdump var="#arguments#" label="Error"><cfabort>
 		<cfelse>
 			<cfmail to="#application.adminemail#" from="#application.adminemail#" subject="#application.sitename# error" type="html">
