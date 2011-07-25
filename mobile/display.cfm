@@ -36,6 +36,7 @@ function ParagraphFormat2(str) {
 		
 		<cfoutput>	
 		<div data-role="header">
+			<a href="http://#application.siteUrl#/index.cfm?nomobile=1" class="ui-btn-right" rel="external" data-icon="blogger-leave" data-iconpos="notext">Leave Mobile</a>		
 			<h1>#entry.title#</h1>
 		</div>
 
@@ -60,7 +61,8 @@ function ParagraphFormat2(str) {
 
 		<cfoutput>	
 		<div data-role="header">
-			<h1>CFBloggers Mobile</h1>
+			<a href="http://#application.siteUrl#/index.cfm?nomobile=1" class="ui-btn-right" rel="external" data-icon="blogger-leave" data-iconpos="notext">Leave Mobile</a>		
+			<h1>#application.siteTitle#</h1>
 		</div>
 
 		<div data-role="content">

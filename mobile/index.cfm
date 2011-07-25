@@ -10,10 +10,16 @@
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">	
 <cfoutput><title>#application.siteTitle# Mobile</title></cfoutput>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
-<script src="http://code.jquery.com/jquery-1.5.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+<style>
+.ui-icon-blogger-leave {
+	background: url("/images/iconExternal.png") no-repeat rgba(0, 0, 0, 0.4);
+}
+</style>
 </head>
 
 <body>
@@ -21,6 +27,7 @@
 <div data-role="page" id="intro">
 
 	<div data-role="header" data-backbtn="false">
+	<a href="http://#application.siteUrl#/index.cfm?nomobile=1" class="ui-btn-right" rel="external" data-icon="blogger-leave" data-iconpos="notext">Leave Mobile</a>		
 	<cfoutput><h1>#application.siteTitle#  Mobile [#url.start#-#url.start+request.perpage-1#]</h1></cfoutput>
 	</div>
 
