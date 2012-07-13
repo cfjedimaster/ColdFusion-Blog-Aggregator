@@ -20,7 +20,7 @@ Removed because people are stupid freaking idiots.
 	<cfset packet = [] />
 	<cfloop query="topentries">
 		<cfset arrayAppend(packet, {
-			title = topentries.packet,
+			title = topentries.title,
 			url = topentries.blogurl,
 			clicks = numberformat(topentries.total)
 		}) />
