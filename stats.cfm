@@ -16,6 +16,18 @@ Removed because people are stupid freaking idiots.
 <cfset onedayago = dateAdd("d", -1, now())>
 <cfset topentries = application.entries.getTopEntries(onedayago)>
 
+<cfif structKeyExists(url, "format") and url.format eq "json">
+	<cfset packet = [] />
+	<cfloop query="topentries">
+		<cfset arrayAppend(packet, {
+			title = topentries.packet,
+			url = topentries.blogurl,
+			clicks = numberformat(topentries.total)
+		}) />
+	</cfloop>
+	<cfcontent type="application/json" reset="true" /><cfoutput>#serializeJson(packet)#</cfoutput><cfabort/>
+</cfif>
+
 <cf_layout title="#application.siteTitle# - Stats">
 
 <h2>Stats</h2>
