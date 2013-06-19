@@ -44,12 +44,18 @@
 		<cfset application.rss = createObject("component", "components.rss")>
 
 		<cfset var root = getDirectoryFromPath(getCurrentTemplatePath())>
-		<cfset var paths = ["#root#/components/twitter4j-core-2.1.4-SNAPSHOT.jar"]>
-		<cfset application.javaloader = createObject("component", "components.javaloader.JavaLoader").init(paths)>
 		<cfif application.twitterNotification>
-			<cfset application.Twitter = application.javaloader.create("twitter4j.Twitter")>
-			<cfset application.Twitter.setOAuthConsumer(application.oAuth.consumerKey,application.oAuth.consumerSecret)>
-			<cfset application.Twitter.setOAuthAccessToken(application.oAuth.accessToken ,application.oAuth.accessTokenSecret)>
+			<cfscript>
+				application.objMonkehTweet = createObject('component', 'components.coldfumonkeh.monkehTweet').init(
+				consumerKey = '#application.oAuth.consumerKey#',
+				consumerSecret = '#application.oAuth.consumerSecret#',
+				oauthToken			=	'#application.oAuth.accessToken#',
+				oauthTokenSecret	=	'#application.oAuth.accessTokenSecret#',
+				userAccountName		=	'#application.twitterUser#',
+				parseResults = true
+				);
+				return true;
+			</cfscript>		
 		</cfif>
 		<cfset application.utils = createObject("component", "components.utils")>
 				
