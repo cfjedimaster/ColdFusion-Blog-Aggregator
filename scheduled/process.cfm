@@ -197,7 +197,7 @@ Aggregating #feeds.recordCount# feeds.
 								<cfset thisurl = " - #shorturl#">
 								<cfset avail = 140 - len(thisurl)>
 								<cfset message = left(title, avail) & thisurl>
-								<cfset application.twitter.updateStatus(message)>
+								<cfset application.objMonkehTweet.postUpdate(message)>
 							</cfif>
 						<cfelse>
 							<cfoutput>ignoring feed #attributes.feed# item because it had no date. or date > 30. date was #date#<br></cfoutput>
