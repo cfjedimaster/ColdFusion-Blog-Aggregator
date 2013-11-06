@@ -10,5 +10,6 @@ You must create a myaggregator datasource. The SQL for building it is provided i
 run on MySQL 4 or 5, and will require modification to run with SQL Server, Access and perhaps other databases.
 
 Edit Application.cfc onApplicationStart variables to match your needs.
+Create a directory named "temp" underneath the scheduled/ directory
 Edit createschedules.cfm to use the right URL for your site, then run it once to setup the scheduled tasks.
 
