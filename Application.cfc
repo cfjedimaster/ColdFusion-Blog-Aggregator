@@ -54,7 +54,6 @@
 				userAccountName		=	'#application.twitterUser#',
 				parseResults = true
 				);
-				return true;
 			</cfscript>		
 		</cfif>
 		<cfset application.utils = createObject("component", "components.utils")>
